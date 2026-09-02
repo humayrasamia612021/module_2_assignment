@@ -1,6 +1,7 @@
 import 'dart:io';
 
 void main() {
+  bool running = true;
 
   print('====================================');
   print('       SMART TEMPERATURE CONVERTER');
@@ -71,7 +72,28 @@ void main() {
       print('$kelvin K = $fahrenheit°F');
       break;
 
+    case '7':
+      running = false;
+      break;
 
+    default:
+      print('Invalid choice. Please enter a number from 1 to 7.');
+      continue;
+
+  }
+
+  if (running) {
+    stdout.write('Do you want to perform another conversion? (y/n): ');
+    String? answer = stdin.readLineSync();
+
+    if (answer == 'y') {
+      continue;
+    } else if (answer == 'n') {
+      running = false;
+    } else {
+      print('Invalid input. Please enter y or n.');
+      running = false;
+    }
   }
 
 }
